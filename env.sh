@@ -8,16 +8,20 @@ if [ 'x$OS' == 'xDarwin' ]; then
     export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
 fi
 
+# Install bower
+npm install -g bower
+
 if [ -e var/bin/activate ]; then
     echo Activating Python virtualenv
     . var/bin/activate
-    pip install -q -r requirements.txt
-
 else
     echo Building out Python virtualenv
     virtualenv var
     echo Activating Python virtualenv
     . var/bin/activate
     easy_install readline
-    pip install -r requirements.txt
 fi
+
+pip install -q -r requirements.txt
+
+

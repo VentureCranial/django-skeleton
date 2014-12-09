@@ -1,3 +1,7 @@
 Django==1.7
 
 SwampDragon==0.3.8.2
+
+django-bower
+django_compressor
+django-require
