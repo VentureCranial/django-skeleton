@@ -42,8 +42,14 @@ To enable Django-Bower:
        BOWER_COMPONENTS_ROOT = '/PROJECT_ROOT/components.'
     4. Add bower apps to BOWER_INSTALLED_APPS.
 
+For more info: https://django-bower.readthedocs.org/en/latest/installation.html
+
 
 Setup Django-SwampDragon
 ------------------------
 
     1. Ensure redis is installed.
+
+For more info: http://swampdragon.net/documentation/quickstart/
+
+
