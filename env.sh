@@ -8,8 +8,11 @@ if [ 'x$OS' == 'xDarwin' ]; then
     export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
 fi
 
-# Install bower
-npm install -g bower
+# Install bower if it's not in the path
+BOWER_BIN=`which bower`
+if [ ! -x $BOWER_BIN ]; then
+    npm install -g bower
+fi
 
 if [ -e var/bin/activate ]; then
     echo Activating Python virtualenv
