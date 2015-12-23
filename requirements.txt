@@ -1,7 +1,22 @@
-Django==1.7
+Django==1.8.7
+django-extensions
+Werkzeug
+gunicorn
 
-SwampDragon==0.3.8.2
+django-grappelli
+
+djangorestframework
+markdown
+django-filter
+django-rest-swagger
+
+SwampDragon
 
 django-bower
 django_compressor
 django-require
+
+celery
+django-celery
+
+pytz

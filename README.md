@@ -12,8 +12,8 @@ Setup Django-Require
 To enable require.js optimization via django-require:
 
     1. Add 'require' to INSTALLED_APPS setting.
-    2. Set STATICFILES_STORAGE setting to 
-       - 'require.storage.OptimizedStaticFilesStorage', or 
+    2. Set STATICFILES_STORAGE setting to
+       - 'require.storage.OptimizedStaticFilesStorage', or
        - 'require.storage.OptimizedCachedStaticFilesStorage'.
 
 For more info: https://github.com/etianen/django-require
@@ -50,6 +50,6 @@ Setup Django-SwampDragon
 
     1. Ensure redis is installed.
 
-For more info: http://swampdragon.net/documentation/quickstart/
+For more info: http://swampdragon.net/documentation/quick-start/
 
 
