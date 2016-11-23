@@ -3,7 +3,7 @@ CONTAINER=docker.venturecranial.com/nanog-profile
 CONTAINER_TAG=dev-latest
 
 .PHONY: default
-default: virtualenv syncdb collectstatic
+default: virtualenv bower_install syncdb collectstatic
 	@echo 'Build complete.'
 
 .PHONY: virtualenv
@@ -15,6 +15,12 @@ virtualenv:
 syncdb:
 	echo ${HOSTNAME}
 	. var/${HOSTNAME}/bin/activate && ./manage.py migrate
+
+.PHONY: bower_install
+bower_install:
+	@echo Installing bower support
+	@npm install -g bower
+	@. var/${HOSTNAME}/bin/activate && ./manage.py bower_install
 
 .PHONY: static
 static:

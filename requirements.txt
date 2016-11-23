@@ -3,6 +3,8 @@ django-extensions
 Werkzeug
 gunicorn
 
+django-registration-redux
+
 # MySQL-python
 
 
@@ -13,7 +15,6 @@ markdown
 django-filter
 django-rest-swagger
 
-SwampDragon
 django-sendfile
 
 django-bower
@@ -28,3 +29,4 @@ passlib
 aniso8601
 ftfy
 requests
+MonthDelta
