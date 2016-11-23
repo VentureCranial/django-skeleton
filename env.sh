@@ -26,12 +26,14 @@ else
     echo Activating Python virtualenv
     . $ROOTDIR/bin/activate
     easy_install readline
+
+    # Install cython
+    pip install cython
+    # Install cython'ed falcon
+    pip install --no-binary :all: falcon
 fi
 
 pip install -q -r requirements.txt
 
-if [ -x ./manage.py ]; then
-    ./manage.py bower_install
-fi
 
 
