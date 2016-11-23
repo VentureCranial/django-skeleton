@@ -3,7 +3,7 @@ django-extensions
 Werkzeug
 gunicorn
 
-MySQL-python
+# MySQL-python
 
 
 django-grappelli

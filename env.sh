@@ -29,12 +29,9 @@ else
 fi
 
 pip install -q -r requirements.txt
-./manage.py bower_install
 
-CHECK=`grep django.utils.datastructures $VIRTUAL_ENV/lib/python2.7/site-packages/passlib/ext/django/utils.py`
-if [ "x$CHECK" == "x" ]; then
-    echo Applying patch to passlib to fix django SortedDict problem
-    patch -p0 $VIRTUAL_ENV/lib/python2.7/site-packages/passlib/ext/django/utils.py patches/fix-sorted-dict-passlib.patch
+if [ -x ./manage.py ]; then
+    ./manage.py bower_install
 fi
 
 

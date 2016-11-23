@@ -2,9 +2,7 @@ HOSTNAME=`hostname -s`
 CONTAINER=docker.venturecranial.com/nanog-profile
 CONTAINER_TAG=dev-latest
 
-
 .PHONY: default
-
 default: virtualenv syncdb collectstatic
 	@echo 'Build complete.'
 
@@ -15,6 +13,7 @@ virtualenv:
 
 .PHONY: syncdb
 syncdb:
+	echo ${HOSTNAME}
 	. var/${HOSTNAME}/bin/activate && ./manage.py migrate
 
 .PHONY: static
