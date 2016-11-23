@@ -1,7 +1,7 @@
 {
-  "name": "django17-skeleton",
+  "name": "django-skeleton",
   "version": "0.0.1",
-  "description": "django17-skeleton",
+  "description": "Basic skeleton for django apps.",
   "dependencies": {
     "gulp-concat": "^2.2.0",
     "gulp-minify-css": "^0.3.0",

@@ -1,9 +1,10 @@
-django17-skeleton
+django-skeleton
 =================
 
 Base skeleton for environment for starting a Django app.
 
-
+Also installs grappelli, mysql support for python, celery, and 
+a few other utilitarian modules.
 
 
 Setup Django-Require

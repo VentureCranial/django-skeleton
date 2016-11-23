@@ -1,7 +1,10 @@
-Django==1.8.7
+Django==1.10.3
 django-extensions
 Werkzeug
 gunicorn
+
+MySQL-python
+
 
 django-grappelli
 
@@ -11,12 +14,17 @@ django-filter
 django-rest-swagger
 
 SwampDragon
+django-sendfile
 
 django-bower
 django_compressor
 django-require
 
 celery
-django-celery
 
 pytz
+
+passlib
+aniso8601
+ftfy
+requests

@@ -1,3 +1,7 @@
+HOSTNAME=`hostname -s`
+CONTAINER=docker.venturecranial.com/nanog-profile
+CONTAINER_TAG=dev-latest
+
 
 .PHONY: default
 
@@ -11,21 +15,21 @@ virtualenv:
 
 .PHONY: syncdb
 syncdb:
-	. var/bin/activate && ./manage.py migrate
+	. var/${HOSTNAME}/bin/activate && ./manage.py migrate
 
 .PHONY: static
 static:
-	. var/bin/activate && echo TBD
+	. var/${HOSTNAME}/bin/activate && echo TBD
 
 .PHONY: collectstatic
 collectstatic: static
-	. var/bin/activate && ./manage.py collectstatic --noinput
+	. var/${HOSTNAME}/bin/activate && ./manage.py collectstatic --noinput
 
 .PHONY: coverage
 coverage: syncdb
 	@echo 'Running web application tests; generating coverage report'
-	. var/bin/activate && coverage run --source='.' manage.py test web
-	. var/bin/activate && coverage report --include='web/*'
+	. var/${HOSTNAME}/bin/activate && coverage run --source='.' manage.py test web
+	. var/${HOSTNAME}/bin/activate && coverage report --include='web/*'
 
 .PHONY: debugsmtp
 debugsmtp:
@@ -33,4 +37,15 @@ debugsmtp:
 
 .PHONY: shell
 shell:
-	. var/bin/activate && ./manage.py shell_plus
+	. var/${HOSTNAME}/bin/activate && ./manage.py shell_plus
+
+.PHONY: devcelery
+devcelery:
+	. var/${HOSTNAME}/bin/activate && rabbitmq-server&
+	. var/${HOSTNAME}/bin/activate && ./manage.py celery -A default worker -l info
+
+.PHONY: container
+container:
+	docker ps || exit -1
+	docker build -t ${CONTAINER}:${CONTAINER_TAG}
+	docker push

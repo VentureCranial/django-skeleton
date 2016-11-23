@@ -1,8 +1,6 @@
 HOSTNAME=`hostname -s`
 ROOTDIR="var/$HOSTNAME"
 
-export ROOTDIR
-
 mkdir -p $ROOTDIR/bin $ROOTDIR/log $ROOTDIR/tmp $ROOTDIR/etc $ROOTDIR/www $ROOTDIR/db $ROOTDIR/log/emails $ROOTDIR/log/celery
 
 # For MacOS X 10.9, when buidling Pillow, the cc uses an invalid
@@ -31,19 +29,12 @@ else
 fi
 
 pip install -q -r requirements.txt
+./manage.py bower_install
 
-if [ -e manage.py ]; then
-    CHECK=`./manage.py | grep bower_install`
-    if [ "x$CHECK" == "x" ]; then
-        echo -n
-    else
-        ./manage.py bower_install 2>&1 > /dev/null
-    fi
+CHECK=`grep django.utils.datastructures $VIRTUAL_ENV/lib/python2.7/site-packages/passlib/ext/django/utils.py`
+if [ "x$CHECK" == "x" ]; then
+    echo Applying patch to passlib to fix django SortedDict problem
+    patch -p0 $VIRTUAL_ENV/lib/python2.7/site-packages/passlib/ext/django/utils.py patches/fix-sorted-dict-passlib.patch
 fi
 
 
-# CHECK=`grep django.utils.datastructures $VIRTUAL_ENV/lib/python2.7/site-packages/passlib/ext/django/utils.py`
-# if [ "x$CHECK" == "x" ]; then
-#     echo Applying patch to passlib to fix django SortedDict problem
-#    patch -p0 $VIRTUAL_ENV/lib/python2.7/site-packages/passlib/ext/django/utils.py patches/fix-sorted-dict-passlib.patch
-# fi
